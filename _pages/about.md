@@ -6,9 +6,12 @@ redirect_from:
   - /about/
   - /about.html
 ---
-**I Like to Learn New Things!!!**
 
-Experienced in using open source as well as Prprietary LLM's for various use case, but now I am working on understanding the backbone of GenAI technology i.e., *DEEP LEARNING*!!! 
+*I Like to Learn New Things!!!*
+
+Experienced in using open source as well as Proprietary LLM's for various use case, but now I am working on understanding the backbone of GenAI technology i.e., *DEEP LEARNING*!!! 
+
+---
 
 🔭 **Currently exploring:**  
 I'm pursuing my **Master of Science in Data Science** at **Indiana University, Bloomington** (📍Bloomington, IN, USA), after completing my **Bachelor of Engineering in Electrical Engineering** (minor in Computer Science) from **Ramdeobaba University** (📍Nagpur, India). 🎓
