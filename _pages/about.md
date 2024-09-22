@@ -9,12 +9,14 @@ redirect_from:
 
 *I Like to Learn New Things!!!*
 
-Experienced in using open source as well as Proprietary LLM's for various use case, but now I am working on understanding the backbone of GenAI technology i.e., *DEEP LEARNING*!!! 
+Experienced in using *Open-source* as well as *Proprietary* LLM's for various use case, but now I am working on understanding the backbone of GenAI technology i.e., *DEEP LEARNING*!!! 
 
 ---
 
 🔭 **Currently exploring:**  
-I'm pursuing my **Master of Science in Data Science** at **Indiana University, Bloomington** (📍Bloomington, IN, USA), after completing my **Bachelor of Engineering in Electrical Engineering** (minor in Computer Science) from **Ramdeobaba University** (📍Nagpur, India). 🎓
+I'm pursuing my **Master of Science in Data Science** at **Indiana University, Bloomington** (📍Bloomington, IN, USA).
+
+Completed my **Bachelor of Engineering in Electrical Engineering** (minor in Computer Science) from **Ramdeobaba University(formerly RCOEM)** (📍Nagpur, India). 🎓
 
 ---
 
@@ -45,7 +47,7 @@ I'm pursuing my **Master of Science in Data Science** at **Indiana University, B
 
 ### 🔋 **Health Monitoring of Li-ion Batteries**  
 **July 2021 – Dec 2022**  
-- 📉 Developed a Kalman filter-based system for monitoring battery health with **super low error rates**.  
+- 📉 Developed a OCV-based system for monitoring battery health with **super low error rates**.  
 - 🔬 Published findings in **Electrochimica Acta** and at the **Springer ICAER Conference**.  
 - 🛠️ Tools used: **Python**, **OCV–SOC model**.
 
