@@ -1,14 +1,14 @@
 ---
 permalink: /
-title: "👋🏻 Hello there, I'm Ujwal"
+title: "👋🏻 Hello there, I'm Ujwal!"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
-# 👋 Hey there, I'm **Ujwal Jibhkate**!
+**I Like to Learn New Things!!!**
 
---- ![Profile Picture](#) <!-- Add your profile picture here -->
+Experienced in using open source as well as Prprietary LLM's for various use case, but now I am working on understanding the backbone of GenAI technology i.e., *DEEP LEARNING*!!! 
 
 🔭 **Currently exploring:**  
 I'm pursuing my **Master of Science in Data Science** at **Indiana University, Bloomington** (📍Bloomington, IN, USA), after completing my **Bachelor of Engineering in Electrical Engineering** (minor in Computer Science) from **Ramdeobaba University** (📍Nagpur, India). 🎓
