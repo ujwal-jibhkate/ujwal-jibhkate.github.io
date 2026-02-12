@@ -34,10 +34,10 @@ const InvitationSection = ({
     return () => ctx.revert();
   }, []);
 
-  const containerClasses = `min-h-screen w-full ${isNeutral ? 'bg-stone-100 text-black' : 'bg-sky-500 text-white'} flex flex-col justify-center items-start p-8 md:p-12 relative overflow-hidden`;
+  const containerClasses = `min-h-screen w-full ${isNeutral ? 'bg-stone-100 text-black' : 'bg-sky-500 text-white'} flex flex-col justify-center items-start p-4 md:p-8 lg:p-12 relative overflow-hidden`;
   const emailClasses = isNeutral
-    ? 'text-xl md:text-4xl font-bold text-amber-700 hover:text-amber-800 transition-colors mt-8 md:mt-0'
-    : 'text-xl md:text-4xl font-bold hover:text-gray-200 transition-colors mt-8 md:mt-0';
+    ? 'text-lg md:text-2xl lg:text-4xl font-bold text-amber-700 hover:text-amber-800 transition-colors mt-4 md:mt-0'
+    : 'text-lg md:text-2xl lg:text-4xl font-bold hover:text-gray-200 transition-colors mt-4 md:mt-0';
   const creditLinkClasses = isNeutral
     ? 'underline hover:text-black/70 transition-colors'
     : 'underline hover:text-gray-200 transition-colors';
@@ -45,8 +45,8 @@ const InvitationSection = ({
   return (
     <section ref={sectionRef} className={containerClasses}>
       <div className="w-full max-w-6xl px-2 md:px-4">
-        <div className="flex items-center justify-between">
-          <h1 className="text-5xl md:text-6xl font-bold leading-tight text-left">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-left">
             {title}
           </h1>
           <a href={`mailto:${email}`} className={emailClasses}>
@@ -55,14 +55,14 @@ const InvitationSection = ({
         </div>
         <div className="w-full h-px bg-white my-6" />
         <div className="flex items-center space-x-4">
-          <img src={profilePicture} alt="Ujwal" className="w-16 h-16 rounded-full object-cover shadow-lg" />
-          <div className="text-base md:text-lg font-medium">
+          <img src={profilePicture} alt="Ujwal" className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover shadow-lg" />
+          <div className="text-sm md:text-base lg:text-lg font-medium">
             <p>AI/ML Engineer</p>
             <p>LLM Enthusiast, Deep Learning Fan!</p>
           </div>
         </div>
       </div>
-      <div className="absolute bottom-8 right-8 text-sm md:text-base md:text-right">
+      <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-auto md:right-8 text-xs md:text-sm lg:text-base text-left md:text-right">
         <p>
           This Website Design is inspired by{' '}
           <a

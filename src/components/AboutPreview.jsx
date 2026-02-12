@@ -20,12 +20,12 @@ const AboutPreview = () => {
     clone.style.margin = '0';
     clone.style.zIndex = '50';
     clone.style.backgroundColor = '#0ea5e9';
-    
+
     const swipeLayer = clone.querySelector('div');
     if (swipeLayer) {
-        swipeLayer.remove();
+      swipeLayer.remove();
     }
-    
+
     document.body.appendChild(clone);
     gsap.set(button, { opacity: 0 });
 
@@ -39,7 +39,7 @@ const AboutPreview = () => {
       ease: 'power3.inOut',
       onComplete: () => {
         navigate('/about');
-        
+
         setTimeout(() => {
           document.body.removeChild(clone);
           gsap.set(button, { opacity: 1 });
@@ -49,20 +49,20 @@ const AboutPreview = () => {
   };
 
   return (
-    <section className="h-screen bg-white text-black flex items-center justify-center">
-      <div className="container mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+    <section className="min-h-screen bg-white text-black flex items-center justify-center py-16 md:py-0">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div className="flex justify-center">
-            <div className="w-80 h-80 bg-gray-200 rounded-full flex items-center justify-center">
+            <div className="w-48 h-48 md:w-80 md:h-80 bg-gray-200 rounded-full flex items-center justify-center">
               <img src={profilePicture} alt="Profile" className="w-full h-full object-cover rounded-full" />
             </div>
           </div>
           <div className="text-left">
-            <p className="text-xl text-gray-700 leading-relaxed">
+            <p className="text-base md:text-xl text-gray-700 leading-relaxed">
               "I like to learn new things." As a self-described epistemophile, this is the simple motto that fuels my work as a software engineer. My focus is on the complete lifecycle of an AI application—from training a deep learning model in PyTorch to containerizing it with Docker and deploying...
             </p>
-            <div className="mt-8 flex items-center gap-4">
-              <button 
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <button
                 ref={buttonRef}
                 onClick={handleAboutClick}
                 className="relative overflow-hidden bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300"

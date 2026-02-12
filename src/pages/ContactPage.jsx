@@ -38,13 +38,13 @@ const ContactPage = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="min-h-screen bg-black flex flex-col items-center justify-center p-8 overflow-hidden">
-      
+    <section ref={containerRef} className="min-h-screen bg-black flex flex-col items-center justify-center pt-32 pb-8 px-8 overflow-hidden">
+
       <div className="text-center mb-16">
         <p className="text-xl text-gray-400">Have a project in mind or just want to connect?</p>
         <h1 className="text-6xl md:text-7xl font-bold text-white mt-2">Get in Touch.</h1>
       </div>
-      
+
       {/* The 'group' class on this container enables the hover effect in the child links */}
       <div className="w-full max-w-4xl space-y-4">
         {contactData.map((item) => (

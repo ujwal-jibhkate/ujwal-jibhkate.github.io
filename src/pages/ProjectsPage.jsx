@@ -127,14 +127,14 @@ const ProjectsPage = () => {
   return (
     <div className="bg-[#111111] text-white snap-y snap-mandatory">
       {/* Section 1: Projects */}
-      <section ref={firstSectionRef} className="projects-section snap-start min-h-screen relative flex flex-col items-center pt-32 pb-24 px-4">
+      <section ref={firstSectionRef} className="projects-section snap-start min-h-screen relative flex flex-col items-center pt-24 md:pt-32 pb-16 md:pb-24 px-4 md:px-8">
         <div className="intro-overlay absolute inset-0 pointer-events-none bg-gradient-to-b from-black via-black/60 to-transparent" />
-        <h1 className="text-center font-medium mb-10" style={{ fontSize: 'clamp(2rem, 15vw, 10rem)' }}>
+        <h1 className="text-left md:text-center w-full font-medium mb-8 md:mb-10" style={{ fontSize: 'clamp(2.5rem, 12vw, 10rem)' }}>
           My Work
         </h1>
 
         {/* Accordion container with natural page scrolling */}
-        <div className="project-accordion group w-full max-w-[1200px] space-y-6 hover:[&_.project-item]:opacity-50">
+        <div className="project-accordion group w-full max-w-[1200px] space-y-4 md:space-y-6 hover:[&_.project-item]:opacity-50">
           {projects.length === 0 ? (
             <div className="text-center text-zinc-400 py-8">
               <p>No projects available right now. Check back soon.</p>

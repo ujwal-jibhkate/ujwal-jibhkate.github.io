@@ -16,7 +16,7 @@ const LetterDisplay = ({ word }) => {
       {word.split('').map((char, i) => (
         <div
           key={i}
-          className="letter text-8xl font-semibold xs:text-[120px] sm:text-[140px] md:text-[160px] lg:text-[180px] xl:text-[200px] 2xl:text-[220px]"
+          className="letter text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-[180px] 2xl:text-[220px] font-semibold"
           style={{ fontFamily: "'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif", willChange: 'transform' }}
           data-speed={getRandomSpeed()}
         >
@@ -90,7 +90,7 @@ const HeroAnimation = () => {
         onEnterBack: () => gsap.set(ref.current, { autoAlpha: 1 })
       });
     }, 100);
-    
+
     return () => {
       clearTimeout(timer);
       pinTrigger?.kill();
@@ -101,8 +101,8 @@ const HeroAnimation = () => {
 
 
   return (
-    <div ref={ref} className="ml-8 scroll-smooth relative h-full overflow-hidden pointer-events-none">
-      <div className="-mt-28 mb-36 flex h-screen flex-col justify-end lg:mb-24">
+    <div ref={ref} className="ml-4 md:ml-8 scroll-smooth relative h-full overflow-hidden pointer-events-none">
+      <div className="-mt-16 md:-mt-28 mb-20 md:mb-36 lg:mb-24 flex h-screen flex-col justify-end">
         <div className="flex flex-wrap">
           <LetterDisplay word="I like to Learn" />
         </div>
@@ -112,9 +112,9 @@ const HeroAnimation = () => {
       </div>
       <div className="flex flex-wrap">
         <LetterDisplay word="Creative" />
-        <div className="w-4 sm:w-10" />
+        <div className="w-2 sm:w-4 md:w-10" />
         <LetterDisplay word="Innovative" />
-        <div className="w-4 sm:w-10" />
+        <div className="w-2 sm:w-4 md:w-10" />
         <LetterDisplay word="Curious" />
       </div>
     </div>

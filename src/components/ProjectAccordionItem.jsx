@@ -40,16 +40,16 @@ const ProjectAccordionItem = ({ project, isActive, onToggle, isDimmed, onHoverEn
       <button
         type="button"
         onClick={onToggle}
-        className="project-header relative z-10 w-full flex items-center justify-between px-4 py-8 cursor-pointer"
+        className="project-header relative z-10 w-full flex items-center justify-between px-2 md:px-4 py-6 md:py-8 cursor-pointer"
       >
-        <div className="flex items-center gap-6">
-          <h2 className="m-0 text-[clamp(1.5rem,5vw,3.5rem)] font-light transition-transform duration-400">
+        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 flex-1 min-w-0">
+          <h2 className="m-0 text-[clamp(1.25rem,5vw,3.5rem)] font-light transition-transform duration-400">
             {project.title}
           </h2>
-          <span className="category text-sm text-zinc-400 font-light">{project.category}</span>
+          <span className="category text-xs md:text-sm text-zinc-400 font-light">{project.category}</span>
         </div>
         <span
-          className={`indicator relative w-6 h-6 transition-transform duration-500 ${isActive ? 'rotate-[135deg]' : ''}`}
+          className={`indicator relative w-8 h-8 md:w-6 md:h-6 flex-shrink-0 ml-4 transition-transform duration-500 ${isActive ? 'rotate-[135deg]' : ''}`}
         >
           <span className="absolute left-1/2 top-0 w-[2px] h-full bg-sky-500 -translate-x-1/2" />
           <span className="absolute top-1/2 left-0 h-[2px] w-full bg-sky-500 -translate-y-1/2" />
@@ -58,9 +58,9 @@ const ProjectAccordionItem = ({ project, isActive, onToggle, isDimmed, onHoverEn
 
       {/* Content */}
       <div
-        className="project-content relative z-10 overflow-hidden px-4"
+        className="project-content relative z-10 overflow-hidden px-2 md:px-4"
         style={{
-          maxHeight: isActive ? 500 : 0,
+          maxHeight: isActive ? 1000 : 0,
           paddingBottom: isActive ? '2rem' : 0,
           transition: 'max-height 0.7s cubic-bezier(0.19, 1, 0.22, 1), padding 0.5s ease',
         }}
