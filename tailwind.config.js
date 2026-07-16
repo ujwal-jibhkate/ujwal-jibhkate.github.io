@@ -6,15 +6,20 @@ export default {
   ],
   theme: {
     extend: {
-      // Add these two new sections
-      animation: {
-        marquee: 'marquee 5s linear infinite',
+      colors: {
+        paper: '#FBF9F3',
+        ink: '#14120E',
+        soft: '#5C574E',
+        faint: '#6E6A5E',
+        hairline: '#D8D2C2',
+        mark: '#A8321E',
+        accent: '#2E5C7A',
+        rule: '#14120E',
+        wash: '#F2EEE2',
       },
-      keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
+      fontFamily: {
+        serif: ['"Source Serif 4"', '"Source Serif Fallback"', 'Georgia', 'serif'],
+        mono: ['"iA Writer Quattro"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
     },
   },

@@ -2,45 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
+/* ---------------------------------------------------------------------
+   Color tokens (Part 1.1), semantic system, not a palette.
+   Mirrored into tailwind.config.js theme.extend.colors.
+--------------------------------------------------------------------- */
+:root {
+  --color-paper: #FBF9F3;
+  --color-ink: #14120E;
+  --color-soft: #5C574E;
+  --color-faint: #6E6A5E;
+  --color-hairline: #D8D2C2;
+  --color-mark: #A8321E;
+  --color-accent: #2E5C7A;
+  --color-rule: #14120E;
+  --color-wash: #F2EEE2;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
+/* ---------------------------------------------------------------------
+   Fonts (Part 1.2 / 2.5), self-hosted, hand-subset.
+   Fontsource's default subsets ship "latin" only, which excludes
+   arrows (→ ↔) and math operators (≈) that this site's prose depends
+   on (verified: Source Serif 4's own cmap has no U+2194 glyph at all,
+   ↔ in serif prose silently falls back to the metrics-matched fallback
+   face; keep ↔ to mono/stack-line contexts, where Quattro has it).
+   Subset command (regenerate if content needs a new glyph):
+     pyftsubset <src>.ttf --output-file=<out>.woff2 --flavor=woff2 \
+       --layout-features='*' \
+       --unicodes='U+0000-00FF,U+0131,U+0152-0153,U+2000-206F,U+2070-209F,U+20A0-20BF,U+0370-03FF,U+2190-21FF,U+2200-22FF'
+--------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('/fonts/source-serif-4-roman.woff2') format('woff2');
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('/fonts/source-serif-4-italic.woff2') format('woff2');
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'iA Writer Quattro';
+  src: url('/fonts/ia-writer-quattro-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'iA Writer Quattro';
+  src: url('/fonts/ia-writer-quattro-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'iA Writer Quattro';
+  src: url('/fonts/ia-writer-quattro-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 }
 
-/* Desktop-only dimming: when hovering the accordion, non-hovered items dim */
-@media (min-width: 768px) {
-  .project-accordion:hover .project-item:not(:hover) {
-    opacity: 0.5;
-  }
-  .project-item:hover {
-    opacity: 1;
-  }
+/* Metrics-matched fallback, kills CLS while font-display:swap loads.
+   Values MEASURED via fontTools against Georgia.ttf (not guessed):
+   size-adjust 126.84%, ascent-override 81.68%, descent-override 26.41%,
+   line-gap-override 0%. */
+@font-face {
+  font-family: 'Source Serif Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 126.84%;
+  ascent-override: 81.68%;
+  descent-override: 26.41%;
+  line-gap-override: 0%;
 }
 
-/* Utility: hide horizontal scrollbar for stylized carousels */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+html {
+  font-feature-settings: 'onum' 1; /* old-style figures in prose by default */
 }
 
-/* Utilities: multi-line text clamping */
-.clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
 }

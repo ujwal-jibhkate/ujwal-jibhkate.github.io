@@ -1,38 +1,48 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import { contact } from '../content/profile';
 
-const Footer = () => {
+/**
+ * Footer, small, quiet site-wide closing chrome.
+ *
+ * Mailto, LinkedIn, GitHub, and a link to the Colophon (rendered on the
+ * About page, see src/components/paper/Colophon.jsx). Styled as mono
+ * chrome (matching Navigation) rather than the serif-italic voice used for
+ * in-content editorial elements, since this is structural nav, not prose.
+ * A single hairline top rule is the only ornament.
+ */
+export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-black text-white py-6 md:py-8 px-4 md:px-8 border-t border-white/10">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center md:justify-between space-y-4 md:space-y-0 text-center md:text-left">
-          {/* Left - Name */}
-          <div className="text-left md:text-left w-full md:w-auto">
-            <p className="text-base md:text-lg font-semibold text-white">Ujwal Jibhkate</p>
-          </div>
+    <footer className="clear-both border-t border-hairline mt-20">
+      <div className="mx-auto max-w-[1140px] px-6 min-[900px]:px-0 py-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.1em] text-faint">
+        <span>&copy; {year} Ujwal Jibhkate</span>
 
-          {/* Middle - Title */}
-          <div className="text-center w-full md:w-auto">
-            <p className="text-sm text-white/70">AI/ML Engineer</p>
-          </div>
-
-          {/* Right - Acknowledgement */}
-          <div className="text-left md:text-right w-full md:w-auto">
-            <p className="text-xs md:text-sm text-white/70">
-              This website design is inspired by{' '}
-              <a
-                href="https://www.linkedin.com/in/bettina-sosa/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-white/80 underline transition-colors duration-300"
-              >
-                Bettina Sosa
-              </a>
-            </p>
-          </div>
+        <div className="flex items-baseline gap-x-6">
+          <a href={`mailto:${contact.email}`} className="hover:text-soft transition-colors">
+            Email
+          </a>
+          <a
+            href={contact.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-soft transition-colors"
+          >
+            LinkedIn
+          </a>
+          <a
+            href={contact.github}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-soft transition-colors"
+          >
+            GitHub
+          </a>
+          <Link to="/about#colophon" className="hover:text-soft transition-colors">
+            Colophon
+          </Link>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

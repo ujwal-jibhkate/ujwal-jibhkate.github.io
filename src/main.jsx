@@ -1,42 +1,34 @@
+// Router, see src/pages/SystemPage.jsx for the workLoader/errorElement
+// design (both "unknown slug" and "slug with no detail page" collapse to
+// the same thrown 404 Response, caught by ErrorPage below).
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
 
-// Import our new page components
 import HomePage from './pages/HomePage.jsx';
-import AboutPage from './pages/AboutPage.jsx'; // We will create this next
-import PublicationsPage from './pages/PublicationsPage.jsx'; // 1. Import the new page
-import ContactPage from './pages/ContactPage.jsx'; // 1. Import the new page
-import ProjectsPage from './pages/ProjectsPage.jsx'; // 1. Import the new page
-
+import AboutPage from './pages/AboutPage.jsx';
+import WorkIndexPage from './pages/WorkIndexPage.jsx';
+import SystemPage, { workLoader } from './pages/SystemPage.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />, // The App component is our root layout
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorPage />,
     children: [
+      { index: true, element: <HomePage /> },
+      { path: 'work', element: <WorkIndexPage /> },
       {
-        path: "/",
-        element: <HomePage />,
+        path: 'work/:slug',
+        element: <SystemPage />,
+        loader: workLoader,
+        errorElement: <ErrorPage />,
       },
-      {
-        path: "/about",
-        element: <AboutPage />,
-      },  
-      {
-        path: "/publications",
-        element: <PublicationsPage />,
-      },
-      {
-        path: "/contact",
-        element: <ContactPage />,
-      },  
-      {
-        path: "/projects",
-        element: <ProjectsPage />,
-      },
+      { path: 'about', element: <AboutPage /> },
+      { path: '*', element: <ErrorPage /> },
     ],
   },
 ]);
