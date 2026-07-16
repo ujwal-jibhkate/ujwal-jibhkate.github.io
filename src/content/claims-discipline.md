@@ -15,8 +15,7 @@ corrected. Violating them creates interview risk.
 | IBM work "delivered to 5M+ customers" | **POCs that did not ship**; 5M+ is the client's customer base |
 | RecSys "solved the cold-start problem" | Addressed **structurally**; never empirically measured |
 | RecSys "+48% better recommendations" | +48% **intra-list diversity (ILD@10)**, with nDCG@10 held stable |
-| Chest X-ray live deployment / demo | **Not hosted**; HF Spaces attempt failed |
-| Chest X-ray metrics as robust | **Validation-only, single 80/20 split** |
+| Chest X-ray metrics as robust | **Validation-only, single 80/20 split** (this still applies even though a live demo now exists at radiology-ai-demo.vercel.app, deployed 2026-07-16, the metrics themselves haven't been re-validated) |
 | Fraud ONNX/WASM as demonstrated skill | AI-generated plumbing; link the demo, don't claim the deployment engineering |
 | Fraud numbers as Kaggle leaderboard results | **Self-computed on a self-carved sealed test set** |
 | Publications as ML research | Electrochemistry / battery modeling |

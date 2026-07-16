@@ -6,12 +6,15 @@
  *
  * `hasDetail: false`, index-only entry, no `./radiology-audit.body.jsx`
  * pairs with this file. See src/content/claims-discipline.md for the hard
- * constraints this content must not violate: this project is NOT deployed
- * or publicly hosted (a Hugging Face Spaces attempt did not work, never
- * write "live" or imply a demo exists), and the 0.94 ROC-AUC / 0.88
+ * constraints this content must not violate: the 0.94 ROC-AUC / 0.88
  * BERTScore F1 / 100% consistency figures are validation-only, computed on
  * a single 80/20 split, never presented as cross-validated or externally
  * benchmarked.
+ *
+ * UPDATE: a static demo is now live at https://radiology-ai-demo.vercel.app/
+ * (the site owner deployed this after the original PROFILE.md snapshot was
+ * written, which had said a Hugging Face Spaces attempt failed and there was
+ * no live demo, that caveat is now stale and has been removed).
  *
  * NOTE on `summary`: literal JSX. Meta files use the `.jsx` extension
  * specifically so this works in the real production build, not just the
@@ -20,16 +23,20 @@
  * metrics: [], see the inline comment below for why no gauge is used here.
  */
 import Sidenote from '../../components/paper/Sidenote';
+import Ref from '../../components/paper/Ref';
 
 /** @type {import('../schema.js').WorkMeta} */
 const radiologyAuditMeta = {
   slug: 'radiology-audit',
   section: 5,
   title: 'Auditable Clinical Report Generation from Chest X-rays',
-  status: 'off',
-  statusLabel: 'complete · not deployed',
+  status: 'live',
+  statusLabel: 'live demo · complete',
   hasDetail: false,
-  links: [{ text: 'GitHub', url: 'https://github.com/ujwal-jibhkate/auditable-radiology-ai' }],
+  links: [
+    { text: 'live demo', url: 'https://radiology-ai-demo.vercel.app/' },
+    { text: 'GitHub', url: 'https://github.com/ujwal-jibhkate/auditable-radiology-ai' },
+  ],
   summary: (
     <>
       A vision-language system for generating chest X-ray radiology reports under a hard
@@ -49,9 +56,8 @@ const radiologyAuditMeta = {
         split. Read them as internal validation results, not as a robustly generalized
         or externally verified performance claim.
       </Sidenote>{' '}
-      Packaged for serving with Docker, FastAPI, and a Streamlit client, but{' '}
-      <em>not</em> hosted anywhere: a Hugging Face Spaces deployment attempt did not
-      work, so there is no live demo.
+      Packaged for serving with Docker, FastAPI, and a Streamlit client, and now live at{' '}
+      <Ref href="https://radiology-ai-demo.vercel.app/">radiology-ai-demo.vercel.app</Ref>.
     </>
   ),
   stack: ['PyTorch', 'Swin Transformer', 'BioBERT', 'Multi-task learning', 'Docker', 'FastAPI', 'Streamlit'],

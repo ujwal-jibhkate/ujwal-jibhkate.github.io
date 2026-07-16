@@ -34,13 +34,13 @@ export default (
     </P>
 
     <SectionHeading n={2}>Approach</SectionHeading>
-    <Figure n={1} caption="AESOP's interface: AI-synthesized literature review output with inline cited evidence.">
+    <Figure n={1} caption="The AESOP mark: six agent nodes in a corrective retrieval loop.">
       <img
         src={aesopScreenshot}
-        alt="Screenshot of AESOP's interface showing AI-powered literature synthesis with cited evidence."
+        alt="The AESOP logo: six connected circular nodes arranged in a hexagonal network, representing the agent pipeline."
         width={1564}
         height={1564}
-        className="w-full h-auto"
+        className="w-full max-w-[280px] h-auto mx-auto"
       />
     </Figure>
     <P>

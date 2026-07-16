@@ -85,6 +85,21 @@ if (recsys && coverage && coverageBaseline) {
     `~${(coverage.value / coverageBaseline.value).toFixed(1)}×`,
   ]);
 }
+// Intra-list diversity (ILD@10): a real, PROFILE.md-sourced headline number,
+// but not a Gauge-eligible metric (recsys.meta.jsx's `metrics` correctly
+// omits it, per the Gauge Rule, only a percentage delta was recorded, no
+// absolute before/after value) so it isn't in `recsys.metrics` and is added
+// here directly instead of computed from baseline/value fields. "Baseline"
+// is descriptive, not numeric, for this one row.
+if (recsys) {
+  tableRows.push([
+    recsys.title,
+    'Intra-list diversity (ILD@10)',
+    '+48%',
+    'pure-relevance ranking (λ=1.0)',
+    'diversity gain',
+  ]);
+}
 
 function HomePage() {
   return (

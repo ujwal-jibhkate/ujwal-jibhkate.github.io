@@ -28,6 +28,7 @@ import Ref from '../components/paper/Ref';
 import BooktabsTable from '../components/paper/BooktabsTable';
 import Errata from '../components/paper/Errata';
 import Colophon from '../components/paper/Colophon';
+import portraitPhoto from '../assets/profile.jpg';
 import {
   bio,
   experience,
@@ -70,11 +71,34 @@ function AboutPage() {
       <RunningHead
         left="Ujwal Jibhkate · Selected Systems"
         center="Author & Errata"
-        page="6"
+        page="7"
       />
 
       <Sheet>
         <PageTitle size="h1">About the author</PageTitle>
+
+        {/*
+          Portrait: floated into the Sheet's reserved 250px margin column,
+          same mechanism Sidenote.jsx uses (float-right + negative margin
+          pulls it out of the 1fr content column). Falls back to a normal
+          block, full-width-capped image below 900px, matching Sheet's own
+          breakpoint for collapsing to a single column.
+        */}
+        <div className="mb-6 min-[900px]:float-right min-[900px]:clear-both min-[900px]:w-[250px] min-[900px]:-mr-[302px] min-[900px]:mb-8 max-w-[250px]">
+          <img
+            src={portraitPhoto}
+            alt="Portrait of Ujwal Jibhkate"
+            width={808}
+            height={900}
+            className="w-full h-auto border border-hairline"
+          />
+          <p className="font-serif text-[11px] leading-[1.55] text-soft mt-[9px]">
+            <b className="text-ink">{bio.name}.</b> {bio.location}. Open to AI/ML engineering
+            roles.
+            <br />
+            <Ref href={`mailto:${contact.email}`}>{contact.email}</Ref>
+          </p>
+        </div>
 
         <P className="first-letter:text-[52px] first-letter:float-left first-letter:leading-[0.84] first-letter:font-normal first-letter:pt-[5px] first-letter:pr-2 first-letter:pb-0 first-letter:pl-0">
           I am an {bio.positioning} I am an {bio.summary[0]} Previously, I was a Software

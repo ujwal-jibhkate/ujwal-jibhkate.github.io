@@ -16,6 +16,16 @@
  * THE GAUGE RULE (enforced, not just conventional): a Gauge with no real
  * baseline to compare against is exactly the decorative, meaningless bar
  * this design argues against, so it throws in dev rather than rendering.
+ *
+ * Baseline label collision: labels are centered on their tick's %
+ * position, so two baselines that sit close together on the scale (e.g.
+ * fraud-risk's 0.035 floor and 0.211 logistic, ~17.6 points apart on a
+ * narrow gauge) can have overlapping text boxes even though their anchor
+ * points don't touch, the label's own width extends past its anchor in
+ * both directions. Fixed with a simple vertical stagger: odd-indexed
+ * baselines drop to a second row, so any two adjacent labels are
+ * guaranteed non-overlapping regardless of proximity or text length,
+ * without needing per-instance tuning of label text.
  */
 export default function Gauge({
   label,
@@ -59,6 +69,7 @@ export default function Gauge({
         {baselines.map((baseline, i) => {
           const isWarn = baseline.tone === 'warn';
           const bpct = clampPct((baseline.value / scaleMax) * 100);
+          const staggerRow = i % 2; // 0 = first row, 1 = second row (collision avoidance)
           return (
             <div
               key={i}
@@ -66,9 +77,9 @@ export default function Gauge({
               style={{ left: `${bpct}%` }}
             >
               <span
-                className={`absolute top-[11px] left-0 -translate-x-1/2 text-[8.5px] italic whitespace-nowrap font-serif ${
-                  isWarn ? 'text-mark' : 'text-soft'
-                }`}
+                className={`absolute left-0 -translate-x-1/2 text-[8.5px] italic whitespace-nowrap font-serif ${
+                  staggerRow === 0 ? 'top-[11px]' : 'top-[22px]'
+                } ${isWarn ? 'text-mark' : 'text-soft'}`}
               >
                 {baseline.label}
               </span>
@@ -78,7 +89,13 @@ export default function Gauge({
       </div>
 
       {captionText && (
-        <div className="text-[9.5px] italic text-faint mt-[19px] font-serif">{captionText}</div>
+        <div
+          className={`text-[9.5px] italic text-faint font-serif ${
+            baselines.length > 1 ? 'mt-[30px]' : 'mt-[19px]'
+          }`}
+        >
+          {captionText}
+        </div>
       )}
     </div>
   );

@@ -62,15 +62,15 @@ export default function WorkIndexPage() {
                   </GaugeGrid>
                 )}
 
-                <div className="font-mono text-[10px] text-faint tracking-[0.03em] mt-2">
+                <div className="clear-both font-mono text-[10px] text-faint tracking-[0.03em] mt-2 max-w-[640px]">
                   {meta.stack.join(' · ')}
                 </div>
 
                 {meta.hasDetail && (
-                  <div className="mt-[9px]">
+                  <div className="clear-both mt-3">
                     <Link
                       to={`/work/${meta.slug}`}
-                      className="font-serif italic text-[12px] text-accent underline-offset-2 hover:underline focus:underline"
+                      className="font-mono text-[12.5px] font-bold uppercase tracking-[0.06em] text-accent underline underline-offset-4 hover:text-ink"
                     >
                       Full write-up →
                     </Link>
@@ -84,7 +84,7 @@ export default function WorkIndexPage() {
         <div className="clear-both bg-wash border-l-[2.5px] border-mark px-4 py-[14px] mt-[30px]">
           <h4 className="font-serif font-bold text-[12.5px] mb-[6px] text-ink">
             <Link to="/about#errata" className="hover:underline focus:underline">
-              See also: Errata, p. 6
+              See also: Errata, p. 7
             </Link>
           </h4>
           <p className="font-serif text-[12px] leading-[1.6] text-soft">

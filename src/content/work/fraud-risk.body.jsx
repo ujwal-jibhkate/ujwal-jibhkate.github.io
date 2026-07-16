@@ -6,19 +6,24 @@
  * component function), see the header comment in aesop.body.jsx for why
  * this shape is required by src/content/work/index.js's bodyModules glob.
  *
- * No <Figure> here: no fraud-related screenshot exists in
- * src/assets/work/ (the live demo is the artifact worth linking, not a
- * static image, see the "live demo" link in fraud-risk.meta.js and the
- * §2/§4 discussion of what the demo actually is).
+ * Figures below are real matplotlib output from the project repo's
+ * evaluation notebooks, re-encoded for web weight; the live demo (see
+ * fraud-risk.meta.js) remains the interactive artifact, these are static
+ * evaluation plots supplementing the prose in §2–§4.
  */
 import SectionHeading from '../../components/paper/SectionHeading';
 import P from '../../components/paper/P';
 import Sidenote from '../../components/paper/Sidenote';
 import Ref from '../../components/paper/Ref';
 import BooktabsTable from '../../components/paper/BooktabsTable';
+import Figure from '../../components/paper/Figure';
 import LimitationsBox from '../../components/paper/LimitationsBox';
 import Gauge from '../../components/paper/Gauge';
 import GaugeGrid from '../../components/paper/GaugeGrid';
+import prCurve from '../../assets/work/fraud-pr-curve.png';
+import shapBeeswarm from '../../assets/work/fraud-shap-beeswarm.png';
+import costTransfer from '../../assets/work/fraud-cost-transfer.png';
+import calibrationCurve from '../../assets/work/fraud-calibration.png';
 
 export default (
   <>
@@ -97,6 +102,18 @@ export default (
         importance plot.
       </Sidenote>
     </P>
+    <Figure
+      n={1}
+      caption="Global SHAP feature-importance beeswarm, top 20 features by mean |SHAP value|, sealed test set. Reading this ranking directly is exactly the trap described above: the engineered features' real contribution was established by ablation testing, not by where they land here."
+    >
+      <img
+        src={shapBeeswarm}
+        alt="SHAP beeswarm plot showing the top 20 global feature importances for the fraud model, colored by feature value from low (blue) to high (pink/red)."
+        width={1600}
+        height={1918}
+        className="w-full h-auto"
+      />
+    </Figure>
     <P>
       The explainability layer, entirely my own design and implementation, pairs a
       SHAP <code>TreeExplainer</code>, which produces per-transaction attributions,
@@ -152,6 +169,18 @@ export default (
         caption="Looks impressive, but ROC-AUC is flattering on 96.5%-negative data. PR-AUC (left) is the metric that actually matters here."
       />
     </GaugeGrid>
+    <Figure
+      n={2}
+      caption="Precision-recall curve, sealed test set. AUC = 0.589, ~17× the 0.035 no-skill baseline (dashed line) at this base rate."
+    >
+      <img
+        src={prCurve}
+        alt="Precision-recall curve for the fraud model on the sealed test set, with area under the curve of 0.589 against the 0.035 no-skill baseline."
+        width={1600}
+        height={1200}
+        className="w-full h-auto"
+      />
+    </Figure>
     <P>
       The deployed threshold is chosen with a cost model, not by maximizing F1 or
       accuracy: a missed fraud (false negative) costs the full transaction amount (a
@@ -209,6 +238,30 @@ export default (
         self-computed on a sealed slice of the labeled training data.
       </p>
     </LimitationsBox>
+    <Figure
+      n={3}
+      caption="Threshold cost, DEV calibration set vs. sealed TEST, each curve normalized to its own minimum. The DEV-optimal threshold (0.26, dotted) sits well past the TEST curve's minimum: it does not transfer. The deployed threshold (0.5, dashed) sits near both curves' minima instead."
+    >
+      <img
+        src={costTransfer}
+        alt="Line chart comparing relative cost versus decision threshold on the DEV calibration set and the sealed TEST set, showing the DEV-optimal threshold of 0.26 does not align with the TEST set's cost minimum, while the deployed threshold of 0.5 does."
+        width={1600}
+        height={1200}
+        className="w-full h-auto"
+      />
+    </Figure>
+    <Figure
+      n={4}
+      caption="Calibration reliability, sealed test set: predicted probability vs. true fraud fraction. Scores bow well below the diagonal because of class_weight='balanced', which is why a raw-probability threshold fit on the calibration set doesn't transfer cleanly, the same point the cost-transfer plot above makes from the deployment-cost side."
+    >
+      <img
+        src={calibrationCurve}
+        alt="Calibration reliability curve for the fraud model on the sealed test set, showing predicted probabilities bowing well below the perfectly-calibrated diagonal due to class_weight='balanced'."
+        width={1600}
+        height={1200}
+        className="w-full h-auto"
+      />
+    </Figure>
 
     <SectionHeading n={5}>Stack</SectionHeading>
     <P>
