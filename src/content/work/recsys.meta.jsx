@@ -29,6 +29,7 @@ const recsysMeta = {
   statusLabel: 'complete · not deployed',
   hasDetail: true,
   links: [
+    { text: 'live demo', url: 'https://live-movie-recs.vercel.app/' },
     { text: 'repo', url: 'https://github.com/ujwal-jibhkate/Dynamic-Embedding-RecSys' },
     {
       text: 'article',

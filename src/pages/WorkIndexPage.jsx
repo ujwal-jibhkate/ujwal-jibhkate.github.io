@@ -66,16 +66,32 @@ export default function WorkIndexPage() {
                   {meta.stack.join(' · ')}
                 </div>
 
-                {meta.hasDetail && (
-                  <div className="clear-both mt-3">
-                    <Link
-                      to={`/work/${meta.slug}`}
-                      className="font-mono text-[12.5px] font-bold uppercase tracking-[0.06em] text-accent underline underline-offset-4 hover:text-ink"
-                    >
-                      Full write-up →
-                    </Link>
-                  </div>
-                )}
+                {(() => {
+                  const liveLink = meta.links?.find((link) => link.text === 'live demo');
+                  if (!meta.hasDetail && !liveLink) return null;
+                  return (
+                    <div className="clear-both mt-3 flex flex-wrap items-baseline gap-x-5">
+                      {meta.hasDetail && (
+                        <Link
+                          to={`/work/${meta.slug}`}
+                          className="font-mono text-[12.5px] font-bold uppercase tracking-[0.06em] text-accent underline underline-offset-4 hover:text-ink"
+                        >
+                          Full write-up →
+                        </Link>
+                      )}
+                      {liveLink && (
+                        <a
+                          href={liveLink.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-mono text-[12.5px] font-bold uppercase tracking-[0.06em] text-accent underline underline-offset-4 hover:text-ink"
+                        >
+                          {meta.slug === 'aesop' ? 'Live' : 'Live demo'} →
+                        </a>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
             </div>
           ))}
